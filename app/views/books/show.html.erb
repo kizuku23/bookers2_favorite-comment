@@ -1,0 +1,63 @@
+<!-- Books Detail -->
+
+<!-- サイドバー -->
+
+<div class="row">
+  <div class="col-xs-3">
+
+    <h2>User info</h2>
+    <table class="table">
+      <tbody>
+        <tr><%= attachment_image_tag @books.user, :profile_image, format: 'jpeg', class: "pull-left profile-img", fallback: "no_image.jpg", size: "100x100" %>
+        </tr>
+      <tr>
+        <th>name</th>
+        <th><%= @books.user.name %></th>
+      </tr>
+      <tr>
+        <th>introduction</th>
+        <th><%= @books.user.introduction %></th>
+      </tr>
+      </tbody>
+    </table>
+    <div class="row">
+      <%= link_to edit_user_path(@books.user.id), class: "col-xs-12 btn btn-default" do %>
+        <span class="glyphicon glyphicon-wrench"></span>
+      <% end %>
+    </div>
+
+    <%= render 'books/new', book: @book %>
+
+  </div>
+
+  <!-- 投稿詳細 -->
+
+  <div class="col-xs-9">
+    <h2>Book detail</h2>
+    <table class="table">
+      <tbody>
+        <tr>
+          <td>
+            <%= link_to user_path(@books.user) do %>
+              <%= attachment_image_tag @books.user, :profile_image, format: 'jpeg', class: "profile-img", fallback: "no_image.jpg", size: "40x40" %>
+                <br>
+                <%= @books.user.name %>
+            <% end %>
+          </td>
+          <td><%= @books.title %></td>
+          <td><%= @books.body %></td>
+          <td>
+            <% if @books.user == current_user %>
+              <%= link_to "Edit", edit_book_path, class: "btn-sm btn-success" %>
+            <% end %>
+          </td>
+          <td>
+            <% if @books.user == current_user %>
+              <%= link_to "Destroy", book_path, method: :delete, "data-confirm" => "本当に消しますか?", class: "btn-sm btn-danger" %>
+            <% end %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
