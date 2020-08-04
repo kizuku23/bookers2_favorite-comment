@@ -16,6 +16,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 header {
   color: white;
 }
@@ -39,6 +45,11 @@ p, ul, td {
   line-height: 18px;
 }
 
+ol {
+  list-style-type: none;
+  padding-left: 10px;
+}
+
 a:visited {
     color: #666;
 }
@@ -56,10 +67,30 @@ a:visited {
   color: green;
 }
 
-.alert {
+#error_explanation {
   color: red;
 }
 
-#error_explanation {
-  color: red;
+.like-button {
+  text-decoration: none;
+}
+
+.comment-user {
+  float: left;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+
+.comment-entry {
+  float: left;
+  line-height: 40px;
+  margin-right: 20px;
+}
+
+.comment-destroy {
+  line-height: 40px;
+}
+
+.btn-destroy {
+  margin-right: 20px;
 }
